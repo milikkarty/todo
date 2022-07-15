@@ -18,6 +18,10 @@ code {
 }
 
 
+form label {
+  position: absolute;
+  left: -99999px;
+}
 
 header {
   align-items: center;
