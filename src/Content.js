@@ -1,12 +1,12 @@
 import ItemList from './ItemList';
 
-const Content = ({ items }) => {
+const Content = ({ items, handleDelete }) => {
 
     return (
         <main>
             {
                 items.length ? (
-                    <ItemList items={items} />
+                    <ItemList items={items} handleDelete={handleDelete} />
                 ) : (
                     <p>The list is empty.</p>
                 )

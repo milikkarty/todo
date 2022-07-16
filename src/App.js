@@ -6,12 +6,12 @@ import { useState } from 'react';
 
 function App() {
 
-  const [items, setItems] = useState(JSON.parse(localStorage.getItem('dolist')));
+  const [items, setItems] = useState(JSON.parse(localStorage.getItem('todolist')));
   const [newItem, setNewItem] = useState('');
 
   const saveItems = newItems => {
     setItems(newItems);
-    localStorage.setItem('dolist', JSON.stringify(newItems))
+    localStorage.setItem('todolist', JSON.stringify(newItems))
   };
 
   const addItem = text => {
@@ -25,6 +25,11 @@ function App() {
     saveItems(listItems);
   };
 
+  const handleDelete = id => {
+    const listItems = items.filter(item => item.id !== id);
+    saveItems(listItems);
+  }
+
   const handleSubmit = e => {
     e.preventDefault();
     if (!newItem) return;
@@ -35,7 +40,7 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <Content items={items} />
+      <Content items={items} handleDelete={handleDelete} />
       <Add newItem={newItem} setNewItem={setNewItem} handleSubmit={handleSubmit} />
       <Footer />
     </div>
