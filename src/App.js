@@ -25,6 +25,11 @@ function App() {
     saveItems(listItems);
   };
 
+  const handleCheck = id => {
+    const listItems = items.map(item => item.id === id ? { ...item, checked: !item.checked } : item );
+    saveItems(listItems);
+  }
+
   const handleDelete = id => {
     const listItems = items.filter(item => item.id !== id);
     saveItems(listItems);
@@ -40,7 +45,7 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <Content items={items} handleDelete={handleDelete} />
+      <Content items={items} handleDelete={handleDelete} handleCheck={handleCheck} />
       <Add newItem={newItem} setNewItem={setNewItem} handleSubmit={handleSubmit} />
       <Footer />
     </div>
