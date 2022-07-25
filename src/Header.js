@@ -1,9 +1,9 @@
 import Search from "./Search";
 
-const Header = () => {
+const Header = ({ search, setSearch }) => {
     return (
         <header>
-            <Search />
+            <Search search={search} setSearch={setSearch} />
             <h1>To-do or not to-do</h1>
             <p>About</p>
         </header>

@@ -8,6 +8,7 @@ function App() {
 
   const [items, setItems] = useState(JSON.parse(localStorage.getItem('todolist')));
   const [newItem, setNewItem] = useState('');
+  const [search, setSearch] = useState('');
 
   const saveItems = newItems => {
     setItems(newItems);
@@ -44,8 +45,11 @@ function App() {
 
   return (
     <div className="App">
-      <Header />
-      <Content items={items} handleDelete={handleDelete} handleCheck={handleCheck} />
+      <Header search={search} setSearch={setSearch} />
+      <Content
+        items={items.filter(item => ((item.text).toLowerCase()).includes(search.toLowerCase()))}
+        handleDelete={handleDelete}
+        handleCheck={handleCheck} />
       <Add newItem={newItem} setNewItem={setNewItem} handleSubmit={handleSubmit} />
       <Footer />
     </div>
